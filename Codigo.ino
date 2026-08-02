@@ -17,3 +17,40 @@ const int VERDE_PEAT  = 1;  // Columna 24 (Pin 1 - TX)
 // Array con todos los pines para apagados rápidos
 const int PINES[] = {1, 2, 3, 4, 5, 6, 9, 10, 11, 12};
 const int TOTAL_PINES = 10;
+// ======================================================
+// VOID SETUP
+// ======================================================
+void setup() {
+  for (int i = 0; i < TOTAL_PINES; i++) {
+    pinMode(PINES[i], OUTPUT);
+  }
+}
+
+// ======================================================
+// BUCLE PRINCIPAL (SECUENCIA DE CICLOS)
+// ======================================================
+void loop() {
+  
+  // ----------------------------------------------------
+  // FASE 1: Tráfico Fluido Norte-Sur (Recto)
+  // ----------------------------------------------------
+  apagarTodo();
+  digitalWrite(VERDE_NS, HIGH);
+  digitalWrite(ROJO_EO, HIGH);
+  digitalWrite(ROJO_PEAT, HIGH);
+  delay(5000); // 5 segundos en verde
+
+  // Transición a Amarillo
+  digitalWrite(VERDE_NS, LOW);
+  digitalWrite(AMARILLO_NS, HIGH);
+  delay(2000); // 2 segundos en amarillo
+
+  // ----------------------------------------------------
+  // FASE 2: Giro Protegido Norte-Sur (Flecha)
+  // ----------------------------------------------------
+  apagarTodo();
+  digitalWrite(ROJO_NS, HIGH);
+  digitalWrite(FLECHA_NS, HIGH);
+  digitalWrite(ROJO_EO, HIGH);
+  digitalWrite(ROJO_PEAT, HIGH);
+  delay(4000); // 4 segundos giro libre
