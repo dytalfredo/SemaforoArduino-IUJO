@@ -77,3 +77,29 @@ void loop() {
   digitalWrite(FLECHA_EO, HIGH);
   digitalWrite(ROJO_PEAT, HIGH);
   delay(4000); // 4 segundos giro libre
+ // ----------------------------------------------------
+  // FASE 5: Cruce Peatonal Exclusivo
+  // ----------------------------------------------------
+  apagarTodo();
+  digitalWrite(ROJO_NS, HIGH);
+  digitalWrite(ROJO_EO, HIGH);
+  digitalWrite(VERDE_PEAT, HIGH);
+  delay(5000); // 5 segundos paso peatonal
+
+  // Advertencia de fin de paso peatonal (Parpadeo)
+  for (int i = 0; i < 4; i++) {
+    digitalWrite(VERDE_PEAT, LOW);
+    delay(250);
+    digitalWrite(VERDE_PEAT, HIGH);
+    delay(250);
+  }
+}
+
+// ======================================================
+// FUNCIÓN AUXILIAR PARA LIMPIAR PINES
+// ======================================================
+void apagarTodo() {
+  for (int i = 0; i < TOTAL_PINES; i++) {
+    digitalWrite(PINES[i], LOW);
+  }
+}
