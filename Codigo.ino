@@ -54,3 +54,26 @@ void loop() {
   digitalWrite(ROJO_EO, HIGH);
   digitalWrite(ROJO_PEAT, HIGH);
   delay(4000); // 4 segundos giro libre
+// ----------------------------------------------------
+  // FASE 3: Tráfico Fluido Este-Oeste (Recto)
+  // ----------------------------------------------------
+  apagarTodo();
+  digitalWrite(ROJO_NS, HIGH);
+  digitalWrite(VERDE_EO, HIGH);
+  digitalWrite(ROJO_PEAT, HIGH);
+  delay(5000); // 5 segundos en verde
+
+  // Transición a Amarillo
+  digitalWrite(VERDE_EO, LOW);
+  digitalWrite(AMARILLO_EO, HIGH);
+  delay(2000); // 2 segundos en amarillo
+
+  // ----------------------------------------------------
+  // FASE 4: Giro Protegido Este-Oeste (Flecha)
+  // ----------------------------------------------------
+  apagarTodo();
+  digitalWrite(ROJO_NS, HIGH);
+  digitalWrite(ROJO_EO, HIGH);
+  digitalWrite(FLECHA_EO, HIGH);
+  digitalWrite(ROJO_PEAT, HIGH);
+  delay(4000); // 4 segundos giro libre
